@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_read_signal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 14:33:29 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/05 19:40:54 by amaria-m         ###   ########.fr       */
+/*   Created: 2022/05/05 17:55:32 by amaria-m          #+#    #+#             */
+/*   Updated: 2022/05/05 20:09:18 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-int main(int argc, char **argv)
+void	ft_read_signal(int signal)
 {
-	int		pid_t;
-	char	*str;
+	//static char	*str;
+	//static int	len_checker;
+	static int	len;
 
-	if (argc != 3)
-		return (ft_printf("invalid parameters\n"));
-	if (ft_strlen(argv[1]))
-		pid_t = ft_atoi(argv[1]);
-	str = argv[2];
-	ft_send_len(pid_t, str);
-	// while (str && *str)
-	// {
-	// 	ft_send_char(pid_t, *str);
-	// 	str++;
-	// }
-	return (0);
+	if (signal == SIGUSR2)
+	{
+		printf("S2\n");
+		len++;
+	}
+	else
+	{
+		printf("%i\n", len);
+		len = 0;
+	}
+	
 }

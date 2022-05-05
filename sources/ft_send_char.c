@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_send_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 14:33:29 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/05 19:40:54 by amaria-m         ###   ########.fr       */
+/*   Created: 2022/05/05 14:53:10 by amaria-m          #+#    #+#             */
+/*   Updated: 2022/05/05 19:53:17 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-int main(int argc, char **argv)
+void	ft_send_char(int pid_t, char a)
 {
-	int		pid_t;
-	char	*str;
-
-	if (argc != 3)
-		return (ft_printf("invalid parameters\n"));
-	if (ft_strlen(argv[1]))
-		pid_t = ft_atoi(argv[1]);
-	str = argv[2];
-	ft_send_len(pid_t, str);
-	// while (str && *str)
-	// {
-	// 	ft_send_char(pid_t, *str);
-	// 	str++;
-	// }
-	return (0);
+	while (a-- > 0)
+	{
+		if (kill(pid_t, SIGUSR2) < 0)
+			exit(0);
+	}
+	if (kill(pid_t, SIGUSR1) < 0)
+		exit(0);
 }

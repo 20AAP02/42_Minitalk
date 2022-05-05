@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   ft_read_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/05 14:33:29 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/05 19:40:54 by amaria-m         ###   ########.fr       */
+/*   Created: 2022/05/05 17:20:01 by amaria-m          #+#    #+#             */
+/*   Updated: 2022/05/05 18:11:33 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-int main(int argc, char **argv)
+int	ft_read_char(int len, int signal, char *str)
 {
-	int		pid_t;
-	char	*str;
+	static int	letter;
+	static int	i;
 
-	if (argc != 3)
-		return (ft_printf("invalid parameters\n"));
-	if (ft_strlen(argv[1]))
-		pid_t = ft_atoi(argv[1]);
-	str = argv[2];
-	ft_send_len(pid_t, str);
-	// while (str && *str)
-	// {
-	// 	ft_send_char(pid_t, *str);
-	// 	str++;
-	// }
-	return (0);
+	if (signal == SIGUSR1)
+	{
+		str[i++] = (char)letter;
+		letter = 0;
+		len -= 1;
+	}
+	else
+	{
+		letter++;
+	}
+	return (len);
 }
