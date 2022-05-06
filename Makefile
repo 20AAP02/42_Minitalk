@@ -1,4 +1,4 @@
-CC		= gcc
+CC		= gcc -D WAIT_TIME=20
 CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -f
 

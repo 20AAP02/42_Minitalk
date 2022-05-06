@@ -6,11 +6,12 @@
 /*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:33:29 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/05 19:40:54 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/06 16:03:25 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
+
 
 int main(int argc, char **argv)
 {
@@ -22,11 +23,14 @@ int main(int argc, char **argv)
 	if (ft_strlen(argv[1]))
 		pid_t = ft_atoi(argv[1]);
 	str = argv[2];
-	ft_send_len(pid_t, str);
-	// while (str && *str)
-	// {
-	// 	ft_send_char(pid_t, *str);
-	// 	str++;
-	// }
+	while (str && *str)
+	{
+		ft_send_char(pid_t, *str);
+		kill(pid_t, SIGUSR1);
+		usleep(WAIT_TIME);
+		str++;
+	}
+	kill(pid_t, SIGUSR1);
+	usleep(WAIT_TIME);
 	return (0);
 }
