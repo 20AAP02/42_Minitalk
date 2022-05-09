@@ -6,19 +6,34 @@
 /*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:53:10 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/05 19:53:17 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:47:07 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
+// void	ft_send_char(int pid_t, char a)
+// {
+// 	while (a--)
+// 	{
+// 		kill(pid_t, SIGUSR2);
+// 		usleep(WAIT_TIME);
+// 	}
+// }
+
 void	ft_send_char(int pid_t, char a)
 {
-	while (a-- > 0)
+	int	bit;
+
+	bit = 0;
+	while (bit < 8)
 	{
-		if (kill(pid_t, SIGUSR2) < 0)
-			exit(0);
+		if (a & (1 << bit))
+			kill(pid_t, SIGUSR2);
+		else
+			kill(pid_t, SIGUSR1);
+		usleep(WAIT_TIME);
+		bit++;
 	}
-	if (kill(pid_t, SIGUSR1) < 0)
-		exit(0);
+	
 }
