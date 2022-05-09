@@ -1,5 +1,5 @@
 CC		= gcc -D WAIT_TIME=20
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -pthread -Wall -Wextra -Werror
 RM		= rm -f
 
 NAME	= minitalk
@@ -16,6 +16,8 @@ SERVER_SRC	:= mains/server.c
 CLIENT_SRC	:= mains/client.c
 
 OBJS	:= $(SRCS:.c=.o)
+OBJS_S	:= $(SERVER_SRC:.c=.o) 
+OBJS_C	:= $(CLIENT_SRC:.c=.o)
 
 .PHONY: all clean fclean re $(NAME)
 
@@ -23,12 +25,14 @@ all: $(NAME)
 
 $(NAME): $(CLIENT)
 
-$(CLIENT): $(SERVER) $(CLIENT_SRC) $(SRCS) $(OBJS) $(LIB)
-	$(CC) $(OBJS) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) $(CLIENT_SRC) -o $(CLIENT)
+$(CLIENT): $(SERVER) $(CLIENT_SRC) $(OBJS_C)
+	$(CC) $(OBJS) $(OBJS_C) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(CLIENT)
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_C)
 
-$(SERVER): $(SERVER_SRC) $(SRCS) $(OBJS) $(LIB)
-	$(CC) $(OBJS) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) $(SERVER_SRC) -o $(SERVER)
+$(SERVER): $(LIB) $(SERVER_SRC) $(SRCS) $(OBJS) $(OBJS_S)
+	$(CC) $(OBJS) $(OBJS_S) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(SERVER)
+	$(RM) $(OBJS_S)
 
 $(LIB):
 	make -f libft/Makefile -s
@@ -38,6 +42,8 @@ $(LIB):
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) $(OBJS_C)
+	$(RM) $(OBJS_S)
 
 fclean:	clean
 	$(RM) $(SERVER)

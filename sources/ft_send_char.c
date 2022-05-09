@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_send_char.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:53:10 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/06 17:47:07 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:10:29 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
-
-// void	ft_send_char(int pid_t, char a)
-// {
-// 	while (a--)
-// 	{
-// 		kill(pid_t, SIGUSR2);
-// 		usleep(WAIT_TIME);
-// 	}
-// }
 
 void	ft_send_char(int pid_t, char a)
 {
@@ -35,5 +26,4 @@ void	ft_send_char(int pid_t, char a)
 		usleep(WAIT_TIME);
 		bit++;
 	}
-	
 }

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:33:29 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/06 17:47:04 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:10:00 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minitalk.h>
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		pid_t;
 	char	*str;

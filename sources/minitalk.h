@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minitalk.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:34:02 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/06 16:38:30 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:11:23 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <ft_printf.h> // ft_printf
 # include <unistd.h> // getpid
 # include <signal.h> // kill
-# include <stdio.h> // printf
 
 void	ft_send_char(int pid_t, char a);
 void	ft_send_len(int pid_t, char *str);
