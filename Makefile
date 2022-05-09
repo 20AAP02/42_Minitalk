@@ -15,7 +15,7 @@ SRCS		:= $(shell find sources/ -name '*.c')
 SERVER_SRC	:= mains/server.c
 CLIENT_SRC	:= mains/client.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJS	:= $(SRCS:.c=.o)
 
 .PHONY: all clean fclean re $(NAME)
 
