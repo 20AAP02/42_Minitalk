@@ -1,4 +1,4 @@
-CC		= gcc -D WAIT_TIME=20
+CC		= gcc -D WAIT_TIME=25
 CFLAGS	= -pthread -Wall -Wextra -Werror
 RM		= rm -f
 
@@ -26,28 +26,30 @@ all: $(NAME)
 $(NAME): $(CLIENT)
 
 $(CLIENT): $(SERVER) $(CLIENT_SRC) $(OBJS_C)
-	$(CC) $(OBJS) $(OBJS_C) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(CLIENT)
-	$(RM) $(OBJS)
-	$(RM) $(OBJS_C)
+	@$(CC) $(OBJS) $(OBJS_C) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(CLIENT)
+	@echo "compiled client"
+	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_C)
 
 $(SERVER): $(LIB) $(SERVER_SRC) $(SRCS) $(OBJS) $(OBJS_S)
-	$(CC) $(OBJS) $(OBJS_S) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(SERVER)
-	$(RM) $(OBJS_S)
+	@$(CC) $(OBJS) $(OBJS_S) $(LIB) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -o $(SERVER)
+	@echo "compiled server"
+	@$(RM) $(OBJS_S)
 
 $(LIB):
-	make -f libft/Makefile -s
+	@make -f libft/Makefile -s
 
 .c.o:
-	$(CC) $(CFLAGS) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -c $< -o $(<:.c=.o)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_LIBFT) -I$(INCLUDE_FT_PRINTF) -I$(INCLUDE_MINITALK) -c $< -o $(<:.c=.o)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(OBJS_C)
-	$(RM) $(OBJS_S)
+	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_C)
+	@$(RM) $(OBJS_S)
 
 fclean:	clean
-	$(RM) $(SERVER)
-	$(RM) $(CLIENT)
-	$(RM) $(LIB)
+	@$(RM) $(SERVER)
+	@$(RM) $(CLIENT)
+	@$(RM) $(LIB)
 
 re: fclean all

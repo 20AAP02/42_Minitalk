@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_read_signal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amaria-m <amaria-m@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: amaria-m <amaria-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 17:55:32 by amaria-m          #+#    #+#             */
-/*   Updated: 2022/05/09 17:04:26 by amaria-m         ###   ########.fr       */
+/*   Updated: 2022/05/12 16:17:09 by amaria-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_read_signal(int signal)
 	bit++;
 	if (bit == 8)
 	{
-		write(1, &letter, 1);
+		if (ft_isprint(letter))
+			write(1, &letter, 1);
 		letter = 0;
 		bit = 0;
 	}
